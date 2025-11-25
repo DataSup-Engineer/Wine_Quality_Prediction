@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result - Wine Quality Classifier</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🍷 Wine Quality Classifier</h1>
+            <p class="subtitle">Prediction Result</p>
+        </header>
+
+        <div class="result-container">
+            <div class="prediction-box">
+                <h2>Predicted Wine Quality</h2>
+                <div class="quality-score">
+                    <span class="score-value">{{ prediction }}</span>
+                    <span class="score-label">/ 10</span>
+                </div>
+                <div class="confidence">
+                    <p>Confidence: <strong>{{ confidence }}%</strong></p>
+                </div>
+                
+                <div class="quality-description">
+                    {% if prediction <= 4 %}
+                        <p class="quality-low">⚠️ Low Quality Wine</p>
+                    {% elif prediction <= 6 %}
+                        <p class="quality-medium">✓ Medium Quality Wine</p>
+                    {% else %}
+                        <p class="quality-high">⭐ High Quality Wine</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="input-summary">
+                <h3>Input Summary</h3>
+                <div class="summary-grid">
+                    <div class="summary-section">
+                        <h4>Acidity Properties</h4>
+                        <ul>
+                            <li><strong>{{ feature_labels['fixed_acidity'] }}:</strong> {{ features.fixed_acidity }}</li>
+                            <li><strong>{{ feature_labels['volatile_acidity'] }}:</strong> {{ features.volatile_acidity }}</li>
+                            <li><strong>{{ feature_labels['citric_acid'] }}:</strong> {{ features.citric_acid }}</li>
+                        </ul>
+                    </div>
+
+                    <div class="summary-section">
+                        <h4>Sugar and Salt</h4>
+                        <ul>
+                            <li><strong>{{ feature_labels['residual_sugar'] }}:</strong> {{ features.residual_sugar }}</li>
+                            <li><strong>{{ feature_labels['chlorides'] }}:</strong> {{ features.chlorides }}</li>
+                        </ul>
+                    </div>
+
+                    <div class="summary-section">
+                        <h4>Sulfur Dioxide</h4>
+                        <ul>
+                            <li><strong>{{ feature_labels['free_sulfur_dioxide'] }}:</strong> {{ features.free_sulfur_dioxide }}</li>
+                            <li><strong>{{ feature_labels['total_sulfur_dioxide'] }}:</strong> {{ features.total_sulfur_dioxide }}</li>
+                        </ul>
+                    </div>
+
+                    <div class="summary-section">
+                        <h4>Physical Properties</h4>
+                        <ul>
+                            <li><strong>{{ feature_labels['density'] }}:</strong> {{ features.density }}</li>
+                            <li><strong>{{ feature_labels['pH'] }}:</strong> {{ features.pH }}</li>
+                            <li><strong>{{ feature_labels['sulphates'] }}:</strong> {{ features.sulphates }}</li>
+                        </ul>
+                    </div>
+
+                    <div class="summary-section">
+                        <h4>Alcohol & Type</h4>
+                        <ul>
+                            <li><strong>{{ feature_labels['alcohol'] }}:</strong> {{ features.alcohol }}%</li>
+                            <li><strong>{{ feature_labels['wine_type'] }}:</strong> 
+                                {% if features.wine_type == '0' %}Red Wine{% else %}White Wine{% endif %}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="button-container">
+                <a href="/" class="btn-predict">Make Another Prediction</a>
+            </div>
+        </div>
+
+        <footer>
+            <p>Wine Quality Classifier using Logistic Regression</p>
+            <p class="note">Predictions are based on physicochemical properties</p>
+        </footer>
+    </div>
+</body>
+</html>
