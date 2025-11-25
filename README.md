@@ -135,13 +135,13 @@ Start the web server:
 python src/app.py
 ```
 
-The application will be available at: **http://127.0.0.1:5000**
+The application will be available at: **http://127.0.0.1:5001**
 
 ### 3. Make Predictions
 
 #### Via Web Interface
 
-1. Open your browser and navigate to `http://127.0.0.1:5000`
+1. Open your browser and navigate to `http://127.0.0.1:5001`
 2. Enter the wine's 11 physicochemical properties in the form
 3. Click "Predict Quality"
 4. View the predicted quality score and confidence
@@ -151,7 +151,7 @@ The application will be available at: **http://127.0.0.1:5000**
 Send a POST request to `/api/predict` with JSON data:
 
 ```bash
-curl -X POST http://127.0.0.1:5000/api/predict \
+curl -X POST http://http://127.0.0.1:5001/api/predict \
   -H "Content-Type: application/json" \
   -d '{
     "fixed_acidity": 7.4,
@@ -301,7 +301,7 @@ Note: Quality scores are based on expert evaluations (median of at least 3 asses
 ### Port already in use
 **Error**: `Address already in use`
 
-**Solution**: Change the port in `src/app.py` or kill the process using port 5000
+**Solution**: Change the port in `src/app.py` or kill the process using port 5001
 
 ## Contributing
 
