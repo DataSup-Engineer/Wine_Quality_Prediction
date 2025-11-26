@@ -166,7 +166,7 @@ def apply_smote(
     - Quality 4: 216 → 800 samples
     - Quality 8: 193 → 500 samples
     - Quality 9: 5 → 300 samples
-    - Quality 5, 6, 7: unchanged
+    - Quality 5, 6, 7: unchanged, enough samples present.
     
     Args:
         X_train: Training features of shape (n_samples, n_features)
